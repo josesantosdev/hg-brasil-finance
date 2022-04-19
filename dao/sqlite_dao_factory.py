@@ -5,10 +5,10 @@ from dao.sqlite_cotacao_dao import SqliteCotacaoDAO
 
 
 class SqliteDAOFactory(DAOFactory):
-    URL_DB = 'db/cotacao.py'
+
+    URL_DB = 'db/cotacao.db'
 
     @staticmethod
-
     def ciar_conexao():
         conexao = None
 
@@ -18,7 +18,7 @@ class SqliteDAOFactory(DAOFactory):
             raise Exception(err)
         return conexao
 
-    def deo_factory(self) -> DAOFactory:
+    def dao_factory(self) -> DAOFactory:
         return SqliteDAOFactory()
 
     @property
