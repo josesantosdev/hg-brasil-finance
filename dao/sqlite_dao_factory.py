@@ -9,7 +9,7 @@ class SqliteDAOFactory(DAOFactory):
     URL_DB = 'db/cotacao.db'
 
     @staticmethod
-    def ciar_conexao():
+    def criar_conexao():
         conexao = None
 
         try:

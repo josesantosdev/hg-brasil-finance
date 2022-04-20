@@ -8,14 +8,14 @@ class SqliteCotacaoDAO(CotacaoDAO):
         conexao = dao.SqliteDAOFactory.criar_conexao()
         cursor = conexao.cursor()
 
-        query = 'INSERT INTRO Cotacao VALUES (NULL, ?, ?, ?,)'
+        query = 'INSERT INTO Cotacao VALUES (NULL, ?, ?, ?)'
         registro = (cotacao.dolar, cotacao.euro, cotacao.data_hora)
 
         try:
             cursor.execute(query, registro)
             conexao.commit()
         except sqlite3.Error as err:
-            raise Exception (f'Erro: {err}')
+            raise Exception(f'Erro: {err}')
         finally:
             if conexao:
                 conexao.close()
@@ -32,7 +32,7 @@ class SqliteCotacaoDAO(CotacaoDAO):
     def buscar_cotacao_hoje(self):
         conexao = dao.SqliteDAOFactory.criar_conexao()
         cursor = conexao.cursor()
-        query = 'SELECT * FROM Cotacao WHERE DATE(data_hora_coleta) = DATE'
+        query = 'SELECT * FROM Cotacao WHERE DATE(data_hora_coleta) = DATE();'
 
         try:
             dados = cursor.execute(query).fetchone()

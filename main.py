@@ -1,4 +1,5 @@
 import locale
+import sys
 from datetime import datetime
 
 from dao.sqlite_dao_factory import SqliteDAOFactory
@@ -51,6 +52,17 @@ def mostrar_menu():
     print(f'Digite um valor em R$ ou 0 para Sair')
 
     valor_reais = float(input('R$ '))
+
+    if valor_reais > 0:
+        real_em_dolar = valor_reais * cotacao_hoje.dolar
+        real_em_euro = valor_reais * cotacao_hoje.euro
+        print(f'\n R$ {valor_reais} = $ {real_em_dolar}')
+        print(f'\n R$ {valor_reais} = £ {real_em_euro}')
+        print(f'\n')
+    else:
+        sys.exit("Encerrando o programa......")
+
+
 
 if __name__ == '__main__':
     SqliteFactory = SqliteDAOFactory()

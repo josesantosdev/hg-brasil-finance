@@ -16,5 +16,5 @@ class CotacaoDAO(ABC):
         pass
 
     @abstractmethod
-    def pesquisar_cotacao(self):
+    def buscar_cotacao_hoje(self):
         pass
